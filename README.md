@@ -1,54 +1,15 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+# 컨벤션
+## 커밋 메시지
+https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13#types
+### Types
+- API or UI relevant changes
+    - `feat` Commits, that add or remove a new feature to the API or UI
+    - `fix` Commits, that fix a API or UI bug of a preceded `feat` commit
+- `refactor` Commits, that rewrite/restructure your code, however do not change any API or UI behaviour
+    - `perf` Commits are special `refactor` commits, that improve performance
+- `style` Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)
+- `test` Commits, that add missing tests or correcting existing tests
+- `docs` Commits, that affect documentation only
+- `build` Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ...
+- `ops` Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...
+- `chore` Miscellaneous commits e.g. modifying `.gitignore`
