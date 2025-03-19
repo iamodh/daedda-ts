@@ -1,3 +1,14 @@
+# 사용 기술
+- Vite
+- Typescript
+- React
+- TailwindCSS
+- Storybook
+
+# 폴더 구조
+Atomic Design Pattern 적용 예정  
+https://yozm.wishket.com/magazine/detail/1531/
+
 # 컨벤션
 ## 커밋 메시지
 https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13#types
