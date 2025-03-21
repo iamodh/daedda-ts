@@ -2,12 +2,8 @@
 - Vite
 - Typescript
 - React
-- TailwindCSS
+- StyledComponents
 - Storybook
-
-# 폴더 구조
-Atomic Design Pattern 적용 예정  
-https://yozm.wishket.com/magazine/detail/1531/
 
 # 컨벤션
 ## 커밋 메시지
