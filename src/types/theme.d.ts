@@ -18,6 +18,11 @@ export interface ColorTypes {
     warning: string;
     error: string;
   };
+  gray: {
+    300: string;
+    400: string;
+    500: string;
+  };
   white: string;
   black: string;
 }
@@ -33,4 +38,11 @@ export interface FontSizeTypes {
   "4xl": string;
   "5xl": string;
   "6xl": string;
+}
+
+export interface BorderRadiusTypes {
+  sm: string; // 8px
+  md: string; // 12px
+  lg: string; // 16px
+  xl: string; // 20px;
 }

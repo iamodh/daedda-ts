@@ -28,6 +28,12 @@ const colors = {
     error: "#F87171",
   },
 
+  gray: {
+    300: "#D4D4D4",
+    400: "#A3A3A3",
+    500: "#737373",
+  },
+
   // 기본 색상
   white: "#FFFFFF",
   black: "#1E1E2F",
@@ -46,9 +52,17 @@ const fontSizes = {
   "6xl": "3.75rem", // 60px
 };
 
+const borderRadius = {
+  sm: "8px",
+  md: "12px",
+  lg: "16px",
+  xl: "20px",
+};
+
 const theme: DefaultTheme = {
   colors,
   fontSizes,
+  borderRadius,
 };
 
 export default theme;
