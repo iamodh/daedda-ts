@@ -72,9 +72,30 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Resets */
-  body {
-    margin: 0;
+  body, h1, h2, h3, ul {
   }
+
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3 {
+    font-size: unset;
+    font-weight: unset;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    }
 `;
 
 export default GlobalStyle;
