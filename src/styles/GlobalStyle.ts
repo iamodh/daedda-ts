@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  /* Typography */
   @font-face {
   font-family: "Pretendard";
   font-weight: 100; /* Thin */
@@ -68,6 +69,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Pretendard";
     font-weight: 400;
     letter-spacing: -0.02px;
+  }
+
+  /* Resets */
+  body {
+    margin: 0;
   }
 `;
 
