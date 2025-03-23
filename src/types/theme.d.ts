@@ -46,3 +46,7 @@ export interface BorderRadiusTypes {
   lg: string; // 16px
   xl: string; // 20px;
 }
+
+export interface ShadowTypes {
+  postCard: string;
+}

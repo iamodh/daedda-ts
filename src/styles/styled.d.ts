@@ -1,4 +1,9 @@
-import { BorderRadiusTypes, ColorTypes, FontSizeTypes } from "@types/theme";
+import {
+  BorderRadiusTypes,
+  ColorTypes,
+  FontSizeTypes,
+  ShadowTypes,
+} from "@types/theme";
 import "styled-components";
 
 // DefaultTheme 인터페이스 확장
@@ -7,5 +12,6 @@ declare module "styled-components" {
     colors: ColorTypes;
     fontSizes: FontSizeTypes;
     borderRadius: BorderRadiusTypes;
+    shadows: ShadowTypes;
   }
 }

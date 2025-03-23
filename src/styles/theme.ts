@@ -59,10 +59,16 @@ const borderRadius = {
   xl: "20px",
 };
 
+const shadows = {
+  postCard:
+    "-1px -1px 16px 0px #EEE, 3px 3px 18px 0px rgba(170, 170, 170, 0.50)",
+};
+
 const theme: DefaultTheme = {
   colors,
   fontSizes,
   borderRadius,
+  shadows,
 };
 
 export default theme;
