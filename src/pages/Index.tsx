@@ -1,6 +1,7 @@
 import Dropdown from "@components/common/Dropdown";
 import SearchForm from "@components/common/SearchForm";
 import Location from "@components/home/Location";
+import PostCard from "@components/home/PostCard";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ const FilterSection = styled.section`
   display: flex;
   gap: 8px;
   height: 32px;
+  margin-bottom: 8px;
 `;
 
 const Filter = styled.div`
@@ -20,6 +22,13 @@ const Filter = styled.div`
   span {
     margin-right: 8px;
   }
+`;
+
+const PostSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
 `;
 
 const timeFilterOpts = [
@@ -71,6 +80,11 @@ const Home = () => {
           <Dropdown options={payFilterOpts} width="120px" />
         </Filter>
       </FilterSection>
+      <PostSection>
+        {[1, 2, 3, 4, 5, 6].map((_, index) => (
+          <PostCard key={index} />
+        ))}
+      </PostSection>
     </Container>
   );
 };

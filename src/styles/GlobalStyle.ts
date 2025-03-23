@@ -72,17 +72,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Resets */
-  body, h1, h2, h3, ul {
-  }
-
-  
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5 {
     font-size: unset;
     font-weight: unset;
   }
