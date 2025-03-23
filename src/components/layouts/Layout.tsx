@@ -10,7 +10,8 @@ const Container = styled.div`
 `;
 
 const Contents = styled.main`
-  min-height: calc(100vh - 120px);
+  padding-top: 60px;
+  padding-bottom: 60px;
 `;
 
 const Layout = () => {

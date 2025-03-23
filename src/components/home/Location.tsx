@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.section`
   display: flex;
   align-items: center;
-  height: 32px;
+  height: 36px;
 
   h2 {
     font-size: ${(props) => props.theme.fontSizes.xl};

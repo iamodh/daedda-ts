@@ -4,6 +4,13 @@ const Container = styled.footer`
   height: 60px;
   display: flex;
   justify-content: space-between;
+  background-color: ${(props) => props.theme.colors.white};
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 640px;
+  margin: 0 auto;
 `;
 
 const Tab = styled.div`
