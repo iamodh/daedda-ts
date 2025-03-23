@@ -13,7 +13,7 @@ const Container = styled.button<{ $isActive: boolean }>`
     }}
     solid 2px;
   border-radius: ${(props) => props.theme.borderRadius.md};
-  transition: border 0.1s ease-in;
+  transition: border 0.1s ease;
   padding: 6px 12px;
   font-size: ${(props) => props.theme.fontSizes.sm};
   cursor: pointer;

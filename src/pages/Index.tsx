@@ -22,6 +22,40 @@ const Filter = styled.div`
   }
 `;
 
+const timeFilterOpts = [
+  {
+    name: "시간 순 정렬",
+    value: "default",
+  },
+  {
+    name: "0 ~ 4 시간",
+    value: "short",
+  },
+  {
+    name: "4 ~ 8 시간",
+    value: "medium",
+  },
+  {
+    name: "8시간 초과",
+    value: "long",
+  },
+];
+
+const payFilterOpts = [
+  {
+    name: "시급 순 정렬",
+    value: "default",
+  },
+  {
+    name: "10,000원 이하",
+    value: "low",
+  },
+  {
+    name: "10,000원 초과",
+    value: "high",
+  },
+];
+
 const Home = () => {
   return (
     <Container>
@@ -30,11 +64,11 @@ const Home = () => {
       <FilterSection>
         <Filter>
           <span>시간</span>
-          <Dropdown>0 ~ 4시간</Dropdown>
+          <Dropdown options={timeFilterOpts} width="120px" />
         </Filter>
         <Filter>
-          <span>급여</span>
-          <Dropdown>시급 10,000원 이하</Dropdown>
+          <span>시급</span>
+          <Dropdown options={payFilterOpts} width="120px" />
         </Filter>
       </FilterSection>
     </Container>
