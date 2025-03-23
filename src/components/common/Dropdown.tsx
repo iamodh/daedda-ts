@@ -21,7 +21,7 @@ const Container = styled.div<{ $width: string }>`
 const Button = styled.button<{ $isOpen: boolean }>`
   border: ${(props) => {
       return props.$isOpen
-        ? props.theme.colors.primary[400]
+        ? props.theme.colors.primary[300]
         : props.theme.colors.gray[300];
     }}
     solid 2px;
@@ -52,11 +52,12 @@ const Options = styled.ul<{ $isOpen: boolean }>`
     cursor: pointer;
     border: ${(props) => {
         return props.$isOpen
-          ? props.theme.colors.primary[400]
+          ? props.theme.colors.primary[300]
           : props.theme.colors.gray[300];
       }}
       solid 2px;
     border-top: 0;
+    background-color: ${(props) => props.theme.colors.white};
 
     &:last-child {
       border-radius: ${({ theme }) =>

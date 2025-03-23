@@ -8,7 +8,7 @@ type ToggleButtonProps = {
 const Container = styled.button<{ $isActive: boolean }>`
   border: ${(props) => {
       return props.$isActive
-        ? props.theme.colors.primary[400]
+        ? props.theme.colors.primary[300]
         : props.theme.colors.gray[300];
     }}
     solid 2px;

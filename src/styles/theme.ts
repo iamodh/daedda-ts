@@ -3,8 +3,8 @@ import { DefaultTheme } from "styled-components";
 const colors = {
   // 브랜드 컬러
   primary: {
-    300: "#C3B5FF", // 밝은 보라
-    400: "#8C6FEE", // 메인 보라
+    300: "#8C6FEE", // 밝은 보라
+    400: "#6123FF", // 메인 보라
     500: "#5A32C6", // 어두운 보라
   },
 
