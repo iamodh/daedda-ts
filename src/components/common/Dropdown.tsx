@@ -67,9 +67,10 @@ const Options = styled.ul<{ $isOpen: boolean }>`
 
 const Dropdown = ({ options, width }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLElement>(null);
+  const dropdownRef = useRef<HTMLButtonElement>(null);
 
   useModalDismiss(dropdownRef, () => setIsOpen(false));
+
   return (
     <Container $width={width}>
       <Button

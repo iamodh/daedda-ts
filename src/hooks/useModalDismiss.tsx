@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 const useModalDismiss = (
-  targetRef: React.RefObject<HTMLElement>,
+  targetRef: React.RefObject<HTMLButtonElement | null>,
   handler: () => void
 ) => {
   useEffect(() => {
