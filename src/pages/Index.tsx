@@ -2,6 +2,8 @@ import Dropdown from "@components/common/Dropdown";
 import SearchForm from "@components/common/SearchForm";
 import Location from "@components/home/Location";
 import PostCard from "@components/home/PostCard";
+import axiosInstance from "@libs/axiosInstance";
+import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
@@ -66,6 +68,17 @@ const payFilterOpts = [
 ];
 
 const Home = () => {
+  const { data } = useQuery({
+    queryKey: ["proucts"],
+    queryFn: () => {
+      return axiosInstance.get("/products");
+    },
+    select: (res) => {
+      return res.data.item;
+    },
+    staleTime: 1000 * 10,
+  });
+
   return (
     <Container>
       <Location />
@@ -81,8 +94,8 @@ const Home = () => {
         </Filter>
       </FilterSection>
       <PostSection>
-        {[1, 2, 3, 4, 5, 6].map((_, index) => (
-          <PostCard key={index} />
+        {data.map((item, index) => (
+          <PostCard item={item} key={index} />
         ))}
       </PostSection>
     </Container>

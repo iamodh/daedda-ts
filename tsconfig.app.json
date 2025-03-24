@@ -29,6 +29,7 @@
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
+      "@libs/*": ["libs/*"],
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
       "@styles/*": ["styles/*"],

@@ -48,11 +48,15 @@ const Thumbnail = styled.div`
   }
 `;
 
-const PostCard = () => {
+type PostCardPropType = {
+  item: object;
+};
+
+const PostCard = ({ item }: PostCardPropType) => {
   return (
     <Container>
       <Info>
-        <h3>기장대게 할인마트 홀 서빙 대타 구함!</h3>
+        <h3>{item.name}</h3>
         <h5>기장대게할인마트ㆍ민락동</h5>
         <h4>90,000원ㆍ시급 15,000원</h4>
         <p>12/19 목ㆍ10:00 ~ 16:00ㆍ6시간</p>
