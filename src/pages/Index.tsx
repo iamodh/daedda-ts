@@ -4,7 +4,10 @@ import Location from "@components/home/Location";
 import PostCard from "@components/home/PostCard";
 import axiosInstance from "@libs/axiosInstance";
 import { useQuery } from "@tanstack/react-query";
+import { AxiosError, AxiosResponse } from "axios";
 import styled from "styled-components";
+import { JobPost, ProductResponse } from "types";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,16 +71,23 @@ const payFilterOpts = [
 ];
 
 const Home = () => {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery<
+    AxiosResponse<ProductResponse>,
+    AxiosError,
+    JobPost[]
+  >({
     queryKey: ["proucts"],
     queryFn: () => {
       return axiosInstance.get("/products");
     },
     select: (res) => {
+      console.log(res);
       return res.data.item;
     },
     staleTime: 1000 * 10,
   });
+
+  console.log(data);
 
   return (
     <Container>
@@ -94,9 +104,9 @@ const Home = () => {
         </Filter>
       </FilterSection>
       <PostSection>
-        {data.map((item, index) => (
-          <PostCard item={item} key={index} />
-        ))}
+        {!isLoading &&
+          data &&
+          data.map((item, index) => <PostCard item={item} key={index} />)}
       </PostSection>
     </Container>
   );

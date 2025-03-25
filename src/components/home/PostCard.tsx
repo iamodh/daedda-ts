@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { JobPost } from "types";
 
 const Container = styled.article`
   display: flex;
@@ -48,11 +49,8 @@ const Thumbnail = styled.div`
   }
 `;
 
-type PostCardPropType = {
-  item: object;
-};
-
-const PostCard = ({ item }: PostCardPropType) => {
+const PostCard = ({ item }: JobPost) => {
+  console.log(item);
   return (
     <Container>
       <Info>
