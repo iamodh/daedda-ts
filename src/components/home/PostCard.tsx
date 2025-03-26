@@ -38,29 +38,74 @@ const Info = styled.div`
 
 const Thumbnail = styled.div`
   margin-left: auto;
-  div {
+  div,
+  img {
     aspect-ratio: 1 / 1;
     width: 124px;
+    border-radius: ${(props) => props.theme.borderRadius.lg};
+    object-fit: cover;
+  }
+
+  div {
     background-color: ${(props) => props.theme.colors.gray[300]};
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${(props) => props.theme.borderRadius.lg};
   }
 `;
 
-const PostCard = ({ item }: JobPost) => {
+type PostCardProps = {
+  item: JobPost;
+};
+
+const PostCard = ({ item }: PostCardProps) => {
   console.log(item);
+  const getWorkedTime = (workTime: [string, string]): number => {
+    const startTime = Number(workTime[0].replace(":", ""));
+    const endTime = Number(workTime[1].replace(":", ""));
+
+    const timeGap = endTime - startTime;
+    return Math.round(timeGap / 100);
+  };
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+    const weekday = weekdays[date.getDay()];
+
+    return `${month}/${day} ${weekday}`;
+  };
   return (
     <Container>
       <Info>
         <h3>{item.name}</h3>
-        <h5>기장대게할인마트ㆍ민락동</h5>
-        <h4>90,000원ㆍ시급 15,000원</h4>
-        <p>12/19 목ㆍ10:00 ~ 16:00ㆍ6시간</p>
+        <h5>{item.extra.condition.company}</h5>
+        <h4>
+          {item.price.toLocaleString()}원ㆍ시급{" "}
+          {(
+            item.price / getWorkedTime(item.extra.condition.workTime)
+          ).toLocaleString()}
+          원
+        </h4>
+        <p>
+          {formatDate(item.extra.condition.date)}ㆍ
+          {item.extra.condition.workTime[0]} ~{" "}
+          {item.extra.condition.workTime[1]}ㆍ
+          {getWorkedTime(item.extra.condition.workTime)}시간
+        </p>
       </Info>
       <Thumbnail>
-        <div>이미지</div>
+        {item.mainImages ? (
+          <img
+            src={`https://11.fesp.shop/files/final01/${item.mainImages[0].name}`}
+          />
+        ) : (
+          <div>이미지</div>
+        )}
       </Thumbnail>
     </Container>
   );
