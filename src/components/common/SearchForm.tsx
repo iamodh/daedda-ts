@@ -13,6 +13,10 @@ const Container = styled.form`
     padding-left: 14px;
     padding-right: calc(16px + 24px + 4px);
     outline-color: ${(props) => props.theme.colors.primary[400]};
+
+    @media only screen and (max-width: 768px) {
+      font-size: ${(props) => props.theme.fontSizes.sm};
+    }
   }
 
   img {

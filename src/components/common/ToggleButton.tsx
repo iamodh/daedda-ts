@@ -17,6 +17,10 @@ const Container = styled.button<{ $isActive: boolean }>`
   padding: 6px 12px;
   font-size: ${(props) => props.theme.fontSizes.sm};
   cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.xs};
+  }
 `;
 
 const ToggleButton = ({ children }: ToggleButtonProps) => {

@@ -16,6 +16,11 @@ const Container = styled.div<{ $width: string }>`
   position: relative;
   width: ${({ $width }) => $width};
   font-size: ${(props) => props.theme.fontSizes.sm};
+
+  @media only screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.xs};
+    width: 100px;
+  }
 `;
 
 const Button = styled.button<{ $isOpen: boolean }>`
@@ -34,6 +39,10 @@ const Button = styled.button<{ $isOpen: boolean }>`
       ? `${props.theme.borderRadius.md} ${props.theme.borderRadius.md} 0 0`
       : `${props.theme.borderRadius.md}`};
   transition: border-radius 0.2s ease;
+
+  @media only screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.xs};
+  }
 `;
 
 const Options = styled.ul<{ $isOpen: boolean }>`

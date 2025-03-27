@@ -27,6 +27,9 @@ const Filter = styled.div`
   span {
     margin-right: 8px;
   }
+  @media only screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.fontSizes.sm};
+  }
 `;
 
 const PostSection = styled.section`
@@ -86,8 +89,6 @@ const Home = () => {
     },
     staleTime: 1000 * 10,
   });
-
-  console.log(data);
 
   return (
     <Container>
