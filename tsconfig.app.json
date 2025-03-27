@@ -32,8 +32,9 @@
       "@libs/*": ["libs/*"],
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
       // "@types/*": ["types/*"]
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"]

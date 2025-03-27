@@ -15,6 +15,7 @@ export default defineConfig({
       { find: "@routes", replacement: "/src/routes" },
       { find: "@styles", replacement: "/src/styles" },
       { find: "@types", replacement: "/src/types" },
+      { find: "@utils", replacement: "/src/utils" },
     ],
   },
 });
