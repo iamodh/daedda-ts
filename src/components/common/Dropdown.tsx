@@ -14,12 +14,14 @@ type DropdownProps = {
 
 const Container = styled.div<{ $width: string }>`
   position: relative;
-  width: ${({ $width }) => $width};
+  width: ${({ $width }) => {
+    console.log($width);
+    return $width;
+  }};
   font-size: ${(props) => props.theme.fontSizes.sm};
 
   @media only screen and (max-width: 768px) {
     font-size: ${(props) => props.theme.fontSizes.xs};
-    width: 100px;
   }
 `;
 

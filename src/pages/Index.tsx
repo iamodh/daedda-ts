@@ -2,6 +2,7 @@ import Dropdown from "@components/common/Dropdown";
 import SearchForm from "@components/common/SearchForm";
 import Location from "@components/home/Location";
 import PostCard from "@components/home/PostCard";
+import useMediaQuery from "@hooks/useMediaQuery";
 import axiosInstance from "@libs/axiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
@@ -74,6 +75,7 @@ const payFilterOpts = [
 ];
 
 const Home = () => {
+  const isTablet = useMediaQuery("(max-width: 768px)");
   const { data, isLoading } = useQuery<
     AxiosResponse<ProductResponse>,
     AxiosError,
@@ -97,11 +99,17 @@ const Home = () => {
       <FilterSection>
         <Filter>
           <span>시간</span>
-          <Dropdown options={timeFilterOpts} width="120px" />
+          <Dropdown
+            options={timeFilterOpts}
+            width={isTablet ? "100px" : "120px"}
+          />
         </Filter>
         <Filter>
           <span>시급</span>
-          <Dropdown options={payFilterOpts} width="120px" />
+          <Dropdown
+            options={payFilterOpts}
+            width={isTablet ? "100px" : "120px"}
+          />
         </Filter>
       </FilterSection>
       <PostSection>
