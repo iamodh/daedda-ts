@@ -3,8 +3,7 @@
 - Typescript
 - React
 - StyledComponents
-- Storybook
-
+  
 # 컨벤션
 ## 커밋 메시지
 https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13#types
