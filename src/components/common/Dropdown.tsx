@@ -15,7 +15,6 @@ type DropdownProps = {
 const Container = styled.div<{ $width: string }>`
   position: relative;
   width: ${({ $width }) => {
-    console.log($width);
     return $width;
   }};
   font-size: ${(props) => props.theme.fontSizes.sm};

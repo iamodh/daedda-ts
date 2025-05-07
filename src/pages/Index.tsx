@@ -2,12 +2,12 @@ import Dropdown from "@components/common/Dropdown";
 import SearchForm from "@components/common/SearchForm";
 import Location from "@components/home/Location";
 import PostCard from "@components/home/PostCard";
+import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import useMediaQuery from "@hooks/useMediaQuery";
 import axiosInstance from "@libs/axiosInstance";
-import { useQuery } from "@tanstack/react-query";
-import { AxiosError, AxiosResponse } from "axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import styled from "styled-components";
-import { JobPost, ProductResponse } from "types";
+import { JobPost } from "types";
 
 const Container = styled.div`
   display: flex;
@@ -76,21 +76,31 @@ const payFilterOpts = [
 
 const Home = () => {
   const isTablet = useMediaQuery("(max-width: 768px)");
-  const { data, isLoading } = useQuery<
-    AxiosResponse<ProductResponse>,
-    AxiosError,
-    JobPost[]
-  >({
-    queryKey: ["proucts"],
-    queryFn: () => {
-      return axiosInstance.get("/products");
+
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+    queryKey: ["products"],
+    queryFn: async ({ pageParam }) => {
+      return await axiosInstance.get(`/products?page=${pageParam}&limit=5`);
     },
-    select: (res) => {
-      console.log(res);
-      return res.data.item;
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { page, totalPages } = lastPage.data.pagination;
+      return page < totalPages ? page + 1 : null;
     },
+    select: (data) => ({
+      pages: data?.pages.flatMap((page) => page.data.item),
+      pageParams: data.pageParams,
+    }),
     staleTime: 1000 * 10,
   });
+
+  const handleIntersect = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  };
+
+  const lastItemRef = useIntersectionObserver(handleIntersect);
 
   return (
     <Container>
@@ -114,8 +124,13 @@ const Home = () => {
       </FilterSection>
       <PostSection>
         {!isLoading &&
-          data &&
-          data.map((item, index) => <PostCard item={item} key={index} />)}
+          data?.pages.map((post: JobPost, index, pages) => (
+            <PostCard
+              item={post}
+              key={post._id}
+              ref={index === pages.length - 1 ? lastItemRef : null}
+            />
+          ))}
       </PostSection>
     </Container>
   );

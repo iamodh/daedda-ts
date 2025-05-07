@@ -1,8 +1,9 @@
 import { formatDate, getWorkedTime } from "@utils/time";
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { JobPost } from "types";
 
-const Container = styled.article`
+const Container = styled.div`
   display: flex;
   padding: 16px;
   box-shadow: ${(props) => props.theme.shadows.postCard};
@@ -85,9 +86,9 @@ type PostCardProps = {
   item: JobPost;
 };
 
-const PostCard = ({ item }: PostCardProps) => {
+const PostCard = forwardRef<HTMLDivElement, PostCardProps>(({ item }, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Info>
         <h3 title={item.name}>{item.name}</h3>
         <h5>{item.extra.condition.company}</h5>
@@ -116,6 +117,6 @@ const PostCard = ({ item }: PostCardProps) => {
       </Thumbnail>
     </Container>
   );
-};
+});
 
 export default PostCard;

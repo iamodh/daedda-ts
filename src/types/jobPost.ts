@@ -23,6 +23,7 @@ export type MainImage = {
 };
 
 export type JobPost = {
+  _id: number;
   name: string;
   price: number;
   quantity: number;
