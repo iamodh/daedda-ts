@@ -42,12 +42,17 @@ const Controls = styled.ul`
   }
 `;
 
-const Location = () => {
+type LocationProps = {
+  address: string | null;
+  onLocationChange: () => void;
+};
+
+const Location = ({ address, onLocationChange }: LocationProps) => {
   return (
     <Container>
       <Address>
-        <h2>동래구 중앙대로 1473번길 14-2</h2>
-        <img src="/icons/location.svg" />
+        <h2>{address ?? "현재 위치를 불러올 수 없습니다."}</h2>
+        <img src="/icons/location.svg" onClick={onLocationChange} />
       </Address>
       <Controls>
         <ToggleButton>3km 이내</ToggleButton>

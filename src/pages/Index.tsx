@@ -6,6 +6,8 @@ import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import useMediaQuery from "@hooks/useMediaQuery";
 import axiosInstance from "@libs/axiosInstance";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { getRoadAdress } from "@utils/kakao";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { JobPost } from "types";
 
@@ -102,9 +104,29 @@ const Home = () => {
 
   const lastItemRef = useIntersectionObserver(handleIntersect);
 
+  /* 위치 주소 획득 */
+  const [address, setAddress] = useState<string | null>(null);
+
+  const handleLocationChange = () => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const newAddress = await getRoadAdress(
+          position.coords.latitude,
+          position.coords.longitude
+        );
+        if (newAddress) setAddress(newAddress);
+      },
+      (error) => console.log("Geolocation error : " + error)
+    );
+  };
+
+  useEffect(() => {
+    handleLocationChange();
+  }, []);
+
   return (
     <Container>
-      <Location />
+      <Location address={address} onLocationChange={handleLocationChange} />
       <SearchForm />
       <FilterSection>
         <Filter>
