@@ -4,7 +4,7 @@ import { KakaoCoordToAddressResponse } from "types";
 export const getRoadAdress = async (
   x: number,
   y: number
-): Promise<string | null> => {
+): Promise<KakaoCoordToAddressResponse["documents"][0] | null> => {
   try {
     const res = await axios.get<KakaoCoordToAddressResponse>(
       "https://dapi.kakao.com/v2/local/geo/coord2address.json",
@@ -22,7 +22,7 @@ export const getRoadAdress = async (
     );
     if (res.data.documents.length === 0) return null;
 
-    return res.data.documents[0].road_address.address_name ?? null;
+    return res.data.documents[0] ?? null;
   } catch (error) {
     console.error("Error fetching address:", error);
     return null;

@@ -1,5 +1,6 @@
 import ToggleButton from "@components/common/ToggleButton";
 import styled from "styled-components";
+import { KakaoCoordToAddressResponse } from "types";
 
 const Container = styled.section`
   display: flex;
@@ -43,16 +44,23 @@ const Controls = styled.ul`
 `;
 
 type LocationProps = {
-  address: string | null;
-  onLocationChange: () => void;
+  address: KakaoCoordToAddressResponse["documents"][0] | null;
+  isLoading: boolean;
+  onClick: () => void;
 };
 
-const Location = ({ address, onLocationChange }: LocationProps) => {
+const Location = ({ address, isLoading, onClick }: LocationProps) => {
+  console.log(isLoading);
   return (
     <Container>
       <Address>
-        <h2>{address ?? "현재 위치를 불러올 수 없습니다."}</h2>
-        <img src="/icons/location.svg" onClick={onLocationChange} />
+        <h2>
+          {isLoading
+            ? "위치를 불러오는 중입니다."
+            : address?.road_address.address_name ??
+              "현재 위치를 불러올 수 없습니다."}
+        </h2>
+        <img src="/icons/location.svg" onClick={onClick} />
       </Address>
       <Controls>
         <ToggleButton>3km 이내</ToggleButton>
