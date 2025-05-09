@@ -1,8 +1,10 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
 type ToggleButtonProps = {
   children: React.ReactNode;
+  isActive: boolean;
+  value: string;
+  onClick: (value: string) => void;
 };
 
 const Container = styled.button<{ $isActive: boolean }>`
@@ -23,18 +25,17 @@ const Container = styled.button<{ $isActive: boolean }>`
   }
 `;
 
-const ToggleButton = ({ children }: ToggleButtonProps) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setIsActive((prev) => !prev);
-  };
-
+const ToggleButton = ({
+  children,
+  isActive,
+  value,
+  onClick,
+}: ToggleButtonProps) => {
   return (
     <Container
       $isActive={isActive}
-      onClick={handleClick}
       aria-pressed={isActive}
+      onClick={() => onClick(value)}
     >
       {children}
     </Container>

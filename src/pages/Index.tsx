@@ -7,7 +7,7 @@ import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import useMediaQuery from "@hooks/useMediaQuery";
 import axiosInstance from "@libs/axiosInstance";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { JobPost } from "types";
 
@@ -79,6 +79,7 @@ const payFilterOpts = [
 const Home = () => {
   const isTablet = useMediaQuery("(max-width: 768px)");
 
+  /* 무한 스크롤 */
   const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
     queryKey: ["products"],
     queryFn: async ({ pageParam }) => {
@@ -107,6 +108,12 @@ const Home = () => {
   /* 위치 주소 획득 */
   const { address, isAddressLoading, fetchAddress } = useGetAddress();
 
+  const [toggledDistance, setToggledDistance] = useState<string | null>(null);
+
+  const handleToggledDistance = (value: string) => {
+    setToggledDistance((prev) => (prev === value ? null : value));
+  };
+
   useEffect(() => {
     fetchAddress();
   }, []);
@@ -116,7 +123,9 @@ const Home = () => {
       <Location
         address={address}
         isLoading={isAddressLoading}
-        onClick={fetchAddress}
+        onFetchAddress={fetchAddress}
+        toggledDistance={toggledDistance}
+        handleToggledDistance={handleToggledDistance}
       />
       <SearchForm />
       <FilterSection>

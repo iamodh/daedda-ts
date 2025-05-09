@@ -1,4 +1,4 @@
-import { getRoadAdress } from "@utils/kakao";
+import { convertPositionToAdress } from "@utils/kakao";
 import { useState } from "react";
 import { KakaoCoordToAddressResponse } from "types";
 
@@ -12,14 +12,14 @@ const useGetAddress = () => {
     setIsAddressLoaing(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
-        const newAddress = await getRoadAdress(
+        const newAddress = await convertPositionToAdress(
           position.coords.latitude,
           position.coords.longitude
         );
         if (newAddress) {
           setAddress(newAddress);
-          setIsAddressLoaing(false);
         }
+        setIsAddressLoaing(false);
       },
       (error) => {
         console.log("Geolocation error : " + error);

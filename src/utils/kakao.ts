@@ -1,7 +1,7 @@
 import axios from "axios";
 import { KakaoCoordToAddressResponse } from "types";
 
-export const getRoadAdress = async (
+export const convertPositionToAdress = async (
   x: number,
   y: number
 ): Promise<KakaoCoordToAddressResponse["documents"][0] | null> => {
